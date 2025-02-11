@@ -4,7 +4,7 @@ import os
 
 # PostgreSQL connection settings
 DB_NAME = "airbnb"
-DB_USER = "postgres"  # Replace with your PostgreSQL username
+DB_USER = "e"  # Replace with your PostgreSQL username
 DB_PASSWORD = ""      # Replace with your PostgreSQL password
 DB_HOST = "localhost"
 DB_PORT = "5432"
@@ -14,9 +14,9 @@ engine = create_engine(f'postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT
 
 # File paths
 files = {
-    'calendar': '../data/processed/03_calendar.parquet',
-    'listings': '../data/processed/03_listings.parquet',
-    'reviews': '../data/processed/03_reviews.parquet'
+    'calendar': 'data/processed/03_calendar.parquet',
+    'listings': 'data/processed/03_listings.parquet',
+    'reviews': 'data/processed/03_reviews.parquet'
 }
 
 # Load and write each file
