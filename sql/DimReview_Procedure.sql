@@ -1,34 +1,26 @@
-CREATE PROCEDURE dim.DimAccommodation_load() as
+CREATE OR REPLACE PROCEDURE dim.DimReviews_load()
+LANGUAGE plpgsql
+AS $$
 BEGIN 
-TRUNCATE TABLE dim.DimAccommodation
-INSERT INTO dim.DimAccommodation (
-    accommodation_id,
-    room_type,
-    property_type,
-    amenities_intervals,
-    accommodates,
-    bathrooms,
-    beds,
-    bedrooms,
-    neighborhood,
-    latitude,
-    longitude,
-    distance_to_center_interval
-)
-
-
-SELECT DISTINCT
-        id as accommodation_id,  
-        room_type,
-        property_type,
-        amenities as amenities_intervals,
-        accommodates,
-        bathrooms,
-        beds,
-        bedrooms,
-        neighbourhood as neighborhood,
-        latitude,
-        longitude,
-        'TBD' as distance_to_center_interval
-    FROM public.listings
-END
+    TRUNCATE TABLE dim.DimReviews;
+    
+    INSERT INTO dim.DimReviews (
+        review_id,
+        review_scores_accuracy,
+        review_scores_cleanliness,
+        review_scores_checkin,
+        review_scores_communication,
+        review_scores_location,
+        review_scores_value
+    )
+    SELECT DISTINCT
+        id as review_id,  
+        review_scores_accuracy,
+        review_scores_cleanliness,
+        review_scores_checkin,
+        review_scores_communication,
+        review_scores_location,
+        review_scores_value
+    FROM public.listings;
+END;
+$$;
