@@ -17,7 +17,8 @@ JOIN dim.DimAccommodation a ON
 JOIN dim.DimHost h ON 
     h.host_id = l.host_id
 JOIN dim.DimReviews r ON 
-    r.review_scores_rating = l.review_scores_rating
+    r.avg_review_scores_rating = l.review_scores_rating
+    AND r.avg_review_scores_variance = l.review_scores_variance
     AND r.number_of_reviews = l.number_of_reviews
     AND r.reviews_per_month = l.reviews_per_month
     AND r.yearly_reviews = l.yearly_review 
