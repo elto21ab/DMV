@@ -4,7 +4,6 @@ SELECT
     host_id as "Host ID",
     host_has_profile_pic as "Has Profile Picture",
     host_experience_years as "Experience Years",
-    host_response_rate as "Response Rate",
     is_superhost as "Is Superhost",
     host_identity_verified as "Identity Verified",
     host_total_listings_count as "Total Listings",
