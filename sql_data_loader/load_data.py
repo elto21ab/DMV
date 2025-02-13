@@ -23,6 +23,5 @@ def load_parquet_to_postgres(file_path, table_name):
 
 # Load all three datasets
 load_parquet_to_postgres('data/processed/05_listings.parquet', 'listings')
-load_parquet_to_postgres('data/processed/05_sentiment_bert.parquet', 'reviews') #- Wait with this until we have the sentiment scores
 
 print("All data successfully loaded into PostgreSQL!") 

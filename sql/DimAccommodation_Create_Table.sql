@@ -1,12 +1,7 @@
--- First create a mapping table to store the relationship
-CREATE TABLE dim.listing_accommodation_map (
-    listing_id INTEGER,
-    accommodation_id INTEGER
-);
-
 -- Create DimAccommodation with surrogate key
 CREATE TABLE dim.DimAccommodation (
-    accommodation_id SERIAL PRIMARY KEY,
+    accommodation_key SERIAL PRIMARY KEY,
+    accommodation_id INTEGER,
     room_type VARCHAR(50),
     property_type VARCHAR(50),
     amenities_intervals VARCHAR(50),
