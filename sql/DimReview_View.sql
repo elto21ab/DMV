@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW public.DimReview AS
+CREATE OR REPLACE VIEW dim.DimReview AS
 SELECT DISTINCT
     id AS review_id,
     review_scores_rating,
@@ -10,5 +10,5 @@ SELECT DISTINCT
     review_scores_value,
     number_of_reviews,
     reviews_per_month,
-    calculated_yearly_reviews AS yearly_reviews
+    yearly_review AS yearly_reviews
 FROM public.listings

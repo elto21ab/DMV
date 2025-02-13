@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW public.DimHost AS
+CREATE OR REPLACE VIEW dim.DimHost AS
 SELECT DISTINCT
     host_id,
     host_experience_years,

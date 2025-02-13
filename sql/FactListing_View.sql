@@ -21,4 +21,4 @@ JOIN dim.DimReview rv ON
     AND rv.review_scores_accuracy = l.review_scores_accuracy
     AND rv.review_scores_cleanliness = l.review_scores_cleanliness
 LEFT JOIN public.reviews r ON 
-    l.id = r.listing_id
+    l.id = r.listing_id 

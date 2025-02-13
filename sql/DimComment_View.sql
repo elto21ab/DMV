@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW public.DimComment AS
+CREATE OR REPLACE VIEW dim.DimComment AS
 SELECT DISTINCT
     r.id AS comment_id,
     r.reviewer_id,
