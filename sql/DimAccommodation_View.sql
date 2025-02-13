@@ -3,7 +3,7 @@ WITH unique_accommodations AS (
     SELECT DISTINCT
         room_type,
         property_type,
-        neighbourhood as neighborhood,
+        host_neighbourhood as neighborhood,
         latitude,
         longitude,
         distance_to_center_km as distance_to_center,
@@ -23,4 +23,4 @@ SELECT
     price_per_person,
     amenities_count,
     accommodates
-FROM unique_accommodations
+FROM unique_accommodations 
