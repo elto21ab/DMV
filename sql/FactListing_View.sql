@@ -1,26 +1,36 @@
-CREATE OR REPLACE VIEW fact.FactListings AS
-SELECT DISTINCT
+CREATE TABLE fact.factlistings (
+    listing_id INTEGER PRIMARY KEY,
+    accommodation_id INTEGER REFERENCES dim.dimaccommodation(accommodation_id),
+    host_id INTEGER REFERENCES dim.dimhost(host_id),
+    review_id INTEGER REFERENCES dim.dimreview(review_id),
+    price_DKK DECIMAL,
+    instant_bookable BOOLEAN,
+    avg_sentiment_score DECIMAL,
+    booking_count INTEGER,
+    lifespan_years DECIMAL,
+    booking_freq_in_lifespan DECIMAL,
+    review_scores_rating DECIMAL,
+    number_of_reviews INTEGER,
+    reviews_per_month DECIMAL,
+    yearly_reviews INTEGER
+);
+
+INSERT INTO fact.FactListings
+SELECT 
     l.id as listing_id,
-    a.accommodation_id,
+    lam.accommodation_id,
     l.host_id,
-    rv.review_id,
-    r.id as comment_id,
-    l."price_DKK" as price_DKK,
-    l.instant_bookable
+    lrm.review_id,
+    l.price as price_DKK,
+    l.instant_bookable,
+    l.avg_sentiment_score,
+    l.booking_count,
+    l.lifespan_years,
+    l.booking_freq_in_lifespan,
+    l.review_scores_rating,
+    l.number_of_reviews,
+    l.reviews_per_month,
+    l.yearly_reviews
 FROM public.listings l
-LEFT JOIN dim.DimAccommodation a ON 
-    l.room_type = a.room_type 
-    AND l.property_type = a.property_type 
-    AND l.host_neighbourhood = a.neighborhood
-    AND l.latitude = a.latitude
-    AND l.longitude = a.longitude
-LEFT JOIN dim.DimHost h ON 
-    l.host_id = h.host_id
-LEFT JOIN dim.DimReview rv ON 
-    l.review_scores_rating = rv.review_scores_rating
-    AND l.review_scores_accuracy = rv.review_scores_accuracy
-    AND l.review_scores_cleanliness = rv.review_scores_cleanliness
-LEFT JOIN (
-    SELECT DISTINCT listing_id, id
-    FROM public.reviews
-) r ON l.id = r.listing_id;
+JOIN dim.listing_accommodation_map lam ON l.id = lam.listing_id
+JOIN dim.listing_review_map lrm ON l.id = lrm.listing_id;
