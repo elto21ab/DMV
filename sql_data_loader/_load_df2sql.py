@@ -21,7 +21,7 @@ def load_parquet_to_postgres(file_path, table_name):
     print(f"{table_name} loaded successfully!")
 
 # Load all three datasets
-load_parquet_to_postgres('data/processed/05_listings.parquet', 'listings')
-load_parquet_to_postgres('data/processed/05_sentiment_bert.parquet', 'reviews') 
+load_parquet_to_postgres('data/processed/06_listings.parquet', 'listings')
+# load_parquet_to_postgres('data/processed/05_sentiment_bert.parquet', 'reviews') 
 
 print("All data loaded successfully!")

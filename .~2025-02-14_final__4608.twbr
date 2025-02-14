@@ -2324,9 +2324,6 @@
             <datasource caption='fact_listing_view (fact.fact_listing_view)+ (airbnb)' name='federated.1rn9qhk049e5mf138w8wi18oigv4' />
           </datasources>
           <datasource-dependencies datasource='federated.1rn9qhk049e5mf138w8wi18oigv4'>
-            <column caption='Revenue' datatype='real' name='[Calculation_324259219997364224]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='[Price (DKK)] * [Total Bookings]' />
-            </column>
             <column caption='Location Category1' datatype='string' name='[Location Category]' role='dimension' type='nominal'>
               <aliases>
                 <alias key='&quot;central&quot;' value='2' />
@@ -2337,36 +2334,27 @@
             </column>
             <column caption='Price (DKK)1' datatype='real' name='[Price (DKK)]' role='measure' type='quantitative' />
             <column caption='Room Type1' datatype='string' name='[Room Type]' role='dimension' type='nominal' />
-            <column caption='Total Bookings1' datatype='integer' name='[Total Bookings]' role='measure' type='quantitative' />
-            <column-instance column='[Calculation_324259219997364224]' derivation='Avg' name='[avg:Calculation_324259219997364224:qk]' pivot='key' type='quantitative' />
+            <column datatype='integer' name='[Total Listings]' role='measure' type='quantitative' />
             <column-instance column='[Price (DKK)]' derivation='Avg' name='[avg:Price (DKK):qk]' pivot='key' type='quantitative' />
             <column-instance column='[Location Category]' derivation='None' name='[none:Location Category:nk]' pivot='key' type='nominal' />
             <column-instance column='[Room Type]' derivation='None' name='[none:Room Type:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Total Listings]' derivation='Sum' name='[sum:Total Listings:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <aggregation value='true' />
         </view>
         <style />
         <panes>
-          <pane selection-relaxation-option='selection-relaxation-allow'>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow'>
             <view>
               <breakdown value='auto' />
             </view>
             <mark class='Automatic' />
-          </pane>
-          <pane id='1' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.1rn9qhk049e5mf138w8wi18oigv4].[avg:Price (DKK):qk]'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Automatic' />
-          </pane>
-          <pane id='3' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.1rn9qhk049e5mf138w8wi18oigv4].[avg:Calculation_324259219997364224:qk]'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1rn9qhk049e5mf138w8wi18oigv4].[sum:Total Listings:qk]' />
+            </encodings>
           </pane>
         </panes>
-        <rows>([federated.1rn9qhk049e5mf138w8wi18oigv4].[avg:Price (DKK):qk] + [federated.1rn9qhk049e5mf138w8wi18oigv4].[avg:Calculation_324259219997364224:qk])</rows>
+        <rows>[federated.1rn9qhk049e5mf138w8wi18oigv4].[avg:Price (DKK):qk]</rows>
         <cols>([federated.1rn9qhk049e5mf138w8wi18oigv4].[none:Room Type:nk] / [federated.1rn9qhk049e5mf138w8wi18oigv4].[none:Location Category:nk])</cols>
       </table>
       <simple-id uuid='{C4EBC120-D2FE-44ED-A37C-E7F9A83F3E85}' />
@@ -4269,6 +4257,11 @@
           </strip>
           <strip size='31'>
             <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='2' param='[federated.1rn9qhk049e5mf138w8wi18oigv4].[sum:Total Listings:qk]' type='color' />
           </strip>
         </edge>
       </cards>
