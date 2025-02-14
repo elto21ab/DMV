@@ -14,7 +14,7 @@ BEGIN
         host_verifications_count,
         host_response_time
     )
-    SELECT DISTINCT
+    SELECT DISTINCT ON (host_id)
         host_id, 
         host_has_profile_pic,
         host_experience_years,
@@ -26,4 +26,5 @@ BEGIN
     FROM public.listings;
 END;
 $$;
+
 call dim.DimHost_load();

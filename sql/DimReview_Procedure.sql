@@ -25,4 +25,4 @@ BEGIN
 END;
 $$;
 
-CALL dim.DimReviews_load();
+CALL dim.DimReview_load();

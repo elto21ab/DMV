@@ -10,4 +10,3 @@ SELECT
     review_scores_value as "Value Score"
 FROM dim.dimreview;
 
-alter table dimreviews rename to DimReview;

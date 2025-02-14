@@ -36,4 +36,4 @@ BEGIN
     COMMIT;
 END;
 $$;
-call dim.DimAccommodation_load();2
+call dim.DimAccommodation_load();

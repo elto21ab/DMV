@@ -1,4 +1,4 @@
-CREATE TABLE dim.DimReviews (
+CREATE TABLE dim.DimReview (
     review_key SERIAL PRIMARY KEY,
     review_id VARCHAR(50),
     review_scores_accuracy DECIMAL,
