@@ -1,4 +1,4 @@
-CREATE TABLE dim.DimReviews (
+CREATE TABLE dim.DimReview (
     review_key SERIAL PRIMARY KEY,
     review_id VARCHAR(50),
     review_scores_accuracy DECIMAL,
@@ -9,4 +9,4 @@ CREATE TABLE dim.DimReviews (
     review_scores_value DECIMAL
 );
 
-CALL dim.DimReviews_load();
+CALL dim.DimReview_load();

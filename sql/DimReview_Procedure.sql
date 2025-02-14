@@ -1,10 +1,10 @@
-CREATE OR REPLACE PROCEDURE dim.DimReviews_load()
+CREATE OR REPLACE PROCEDURE dim.DimReview_load()
 LANGUAGE plpgsql
 AS $$
 BEGIN 
-    TRUNCATE TABLE dim.DimReviews;
+    TRUNCATE TABLE dim.DimReview;
     
-    INSERT INTO dim.DimReviews (
+    INSERT INTO dim.DimReview (
         review_id,
         review_scores_accuracy,
         review_scores_cleanliness,
