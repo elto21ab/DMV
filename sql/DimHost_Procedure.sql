@@ -26,3 +26,4 @@ BEGIN
     FROM public.listings;
 END;
 $$;
+call dim.DimHost_load();

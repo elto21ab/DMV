@@ -9,4 +9,3 @@ CREATE TABLE dim.DimReviews (
     review_scores_value DECIMAL
 );
 
-CALL dim.DimReviews_load();

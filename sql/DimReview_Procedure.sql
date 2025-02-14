@@ -24,3 +24,5 @@ BEGIN
     FROM public.listings;
 END;
 $$;
+
+CALL dim.DimReviews_load();
