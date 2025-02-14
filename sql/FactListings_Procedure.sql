@@ -22,11 +22,10 @@ BEGIN
     FROM public.listings l
     JOIN dim.DimAccommodation da ON CAST(l.id AS VARCHAR(50)) = da.accommodation_id
     JOIN dim.DimHost dh ON CAST(l.host_id AS VARCHAR(50)) = dh.host_id
-    JOIN dim.dimReviews dr ON CAST(l.id AS VARCHAR(50)) = dr.review_id;
+    JOIN dim.dimReview dr ON CAST(l.id AS VARCHAR(50)) = dr.review_id;
     
     COMMIT;
 END;
 $$;
 
 Call fact.FactListing_load();
-
